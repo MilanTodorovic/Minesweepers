@@ -17,18 +17,14 @@ REVEALED = set()
 UNOPENED_FIELDS = GRID_SIZE*GRID_SIZE  # not a constant
 
 def populate_user_grid(grid):
-    global GRID_SIZE
     for i in range(GRID_SIZE):
         grid.append(["?" for j in range(GRID_SIZE)])
 
 def pre_populate_number_grid(grid):
-    global GRID_SIZE
     for i in range(GRID_SIZE):
         grid.append([0 for j in range(GRID_SIZE)])
 
 def place_mines(grid):
-    global GRID_SIZE
-    global MINES
     s = set()
     while len(s) < MINES:
         s.add((random.randint(0,GRID_SIZE-1),random.randint(0,GRID_SIZE-1)))
@@ -41,7 +37,6 @@ def place_mines(grid):
         
 
 def place_numbers(mine_grid, grid):
-    global GRID_SIZE
     sorounding_mines = 0
     for i in range(GRID_SIZE):
         for j in range(GRID_SIZE):
@@ -173,7 +168,6 @@ def place_numbers(mine_grid, grid):
                 sorounding_mines = 0
 
 def reveal_neighbours(x, y):
-    global GRID_SIZE, NUMBER_GRID, REVEALED
 
     if ( x >= 0 and x <= GRID_SIZE-1) and (y >= 0 and y <= GRID_SIZE-1):
         if (x,y) in REVEALED:
@@ -190,7 +184,7 @@ def reveal_neighbours(x, y):
                 reveal_neighbours(x, y-1)
 
 def check_for_mines(x, y, m_grid, n_grid, u_grid):
-    global ALIVE, REVEALED, GREEN, RESET, RED
+    global ALIVE
     if m_grid[x][y]:
         print("You died.")
         ALIVE = False
