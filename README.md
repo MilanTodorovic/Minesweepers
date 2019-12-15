@@ -1,3 +1,3 @@
 # Minesweepers
 
-Just playing around
+Just thinkering around.
